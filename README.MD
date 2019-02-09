@@ -1,4 +1,4 @@
-# connectHooks ⚓️
+# connectHooks ⛴
 
 I'm not sure a HoC for hooks is a good idea, but it seemed fun to build.
 Also, it may come in handy when adding new code to old components.
