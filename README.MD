@@ -1,7 +1,7 @@
 # connectHooks ⛴
 
-I don't think a HoC for hooks is a good idea long term, but it seemed fun to build.
-Also, it may come in handy in some ways. It allows you to refactor your HoCs into hooks without needing to also refactor all the classes that use them.
+This probably isn't a good idea longterm, it basically defeats the point of react hook. That said, it may actually come in handy for a while.
+If you use `connectHooks`, you can refactor your HoCs into hooks without needing to immediatedly refactor all your classes that are using them.
 
 #### Use it directly like so:
 
