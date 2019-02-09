@@ -11,7 +11,22 @@ const withWindowSize = connectHooks([
 ])
 ```
 
-##### Or use them directly like so:
+```jsx
+// You can also combine multiple hooks into one HoC:
+
+const withWindowSizeAndScrollPosition = connectHooks([
+  {
+    hook: useWindowScrollPosition,
+    toProps: scrollPosition => ({ scrollPosition })
+  },
+  {
+    hook: useWindowSize,
+    toProps: windowSize => ({ windowSize })
+  }
+])
+```
+
+##### Or use connectHooks directly like so:
 
 ```jsx
 export default connectHooks([
@@ -32,8 +47,8 @@ export default connectHooks([
 
 example: https://codesandbox.io/s/qk6r33649q
 
-This pattern probably isn't a good idea longterm, but it may come in handy for a while.
+This probably isn't a good pattern longterm, since in functional components you simply use hooks directly. 
 
-Using `connectHooks`, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. 
+However, using this, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. 
 
 Also, it was fun to code 😉.
