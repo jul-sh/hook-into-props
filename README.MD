@@ -1,7 +1,7 @@
 # connectHooks ⛴
 
 This probably isn't a good idea longterm, it basically defeats the point of react hook. That said, it may actually come in handy for a while.
-If you use `connectHooks`, you can refactor your HoCs into hooks without needing to immediatedly refactor all your classes that are using them.
+With `connectHooks` you can refactor your codebase's existing HoCs into hooks without needing to immediatedly rewrite all the classes that use them.
 
 #### Use it directly like so:
 
