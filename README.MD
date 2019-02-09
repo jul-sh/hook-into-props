@@ -32,5 +32,8 @@ export default connectHooks([
 
 example: https://codesandbox.io/s/qk6r33649q
 
-Using probably isn't a good idea longterm, it basically defeats the point of react hooks. That said, it may actually come in handy for a while.
-Using this, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. Also, it was fun to code 😉.
+This pattern probably isn't a good idea longterm, but it may come in handy for a while.
+
+Using `connectHooks`, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. 
+
+Also, it was fun to code 😉.
