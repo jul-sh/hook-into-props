@@ -3,7 +3,7 @@
 I don't think a HoC for hooks is a good idea long term, but it seemed fun to build.
 Also, it may come in handy in some ways. It allows refactoring your HoCs into hooks without needing to also refactor all the classes that use them.
 
-#### Use like so:
+#### Use it directly like so:
 
 ```jsx
 export default connectHooks([
@@ -24,7 +24,7 @@ export default connectHooks([
 
 example: https://codesandbox.io/s/qk6r33649q
 
-#### Compose hooks into higherOrders like so:
+#### Or compose hooks into higherOrders like so:
 
 ```jsx
 const withWindowSizeAndScrollPosition = connectHooks([
