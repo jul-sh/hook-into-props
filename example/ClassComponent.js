@@ -9,7 +9,7 @@ export default connectHooks([
   }
 ])(
   class ClassComponent extends React.Component {
-    // ...
+    // ... (imagine legacy code here)
     handleChange = event => this.props.setValue(event.target.value)
     render() {
       return <textarea value={this.props.value} onChange={this.handleChange} />
