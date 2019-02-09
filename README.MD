@@ -1,9 +1,6 @@
 # 🚢connectHooks 
 
-This probably isn't a good idea longterm, it basically defeats the point of react hook. That said, it may actually come in handy for a while.
-With `connectHooks` you can refactor your codebase's existing HoCs into hooks without needing to immediatedly rewrite all the classes that use them.
-
-#### Use it directly like so:
+##### Use it directly like so:
 
 ```jsx
 export default connectHooks([
@@ -24,7 +21,7 @@ export default connectHooks([
 
 example: https://codesandbox.io/s/qk6r33649q
 
-#### Or compose hooks into higherOrders like so:
+##### Or compose hooks into higherOrders like so:
 
 ```jsx
 const withWindowSizeAndScrollPosition = connectHooks([
@@ -38,3 +35,6 @@ const withWindowSizeAndScrollPosition = connectHooks([
   }
 ])
 ```
+
+Using probably isn't a good idea longterm, it basically defeats the point of react hook. That said, it may actually come in handy for a while.
+With`connectHooks` you can refactor your codebase's existing HoCs into hooks without needing to immediatedly rewrite all the classes that use them. Also, it was fun to code 😉.
