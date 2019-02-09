@@ -1,7 +1,7 @@
 # connectHooks ⛴
 
-I'm not sure a HoC for hooks is a good idea, but it seemed fun to build.
-Also, it may come in handy when adding new code to old components.
+I don't think a HoC for hooks is a particularly good idea, but it seemed fun to build.
+Also, it may come in handy when adding new code to old components you don't yet have capacity to refactor.
 
 #### Use like so:
 
