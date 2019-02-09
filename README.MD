@@ -1,6 +1,17 @@
 # 🚢connectHooks 
 
-##### Use it directly like so:
+##### Consume hooks into higherOrders like so:
+
+```jsx
+const withWindowSize = connectHooks([
+  {
+    hook: useWindowSize,
+    toProps: windowSize => ({ windowSize })
+  }
+])
+```
+
+##### Or use them directly like so:
 
 ```jsx
 export default connectHooks([
@@ -21,20 +32,5 @@ export default connectHooks([
 
 example: https://codesandbox.io/s/qk6r33649q
 
-##### Or compose hooks into higherOrders like so:
-
-```jsx
-const withWindowSizeAndScrollPosition = connectHooks([
-  {
-    hook: useWindowScrollPosition,
-    toProps: scrollPosition => ({ scrollPosition })
-  },
-  {
-    hook: useWindowSize,
-    toProps: windowSize => ({ windowSize })
-  }
-])
-```
-
-Using probably isn't a good idea longterm, it basically defeats the point of react hook. That said, it may actually come in handy for a while.
-With`connectHooks` you can refactor your codebase's existing HoCs into hooks without needing to immediatedly rewrite all the classes that use them. Also, it was fun to code 😉.
+Using probably isn't a good idea longterm, it basically defeats the point of react hooks. That said, it may actually come in handy for a while.
+Using this, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. Also, it was fun to code 😉.
