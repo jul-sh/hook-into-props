@@ -1,6 +1,6 @@
 # 🚢connectHooks 
 
-##### Consume hooks into higherOrders like so:
+##### Convert hooks to higherOrders like so:
 
 ```jsx
 const withWindowSize = connectHooks([
