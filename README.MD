@@ -45,10 +45,10 @@ export default connectHooks([
 )
 ```
 
-example: https://codesandbox.io/s/qk6r33649q
+#### Purpose
 
 Using this, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. 
 
-Long term however, this pattern probably isn't that helpful. Hooks elimate the need for class components, and in functional components you can call hooks directly.
+Long term, `connectHooks` probably isn't that helpful. Hooks elimate the need for class components, and in functional components you can call hooks directly.
 
 It can help with the transition period though, and it was fun to code 😉.
