@@ -1,7 +1,7 @@
 import React from "react"
 
 const connectHooks = hooks => Component => props => {
-  const HookProvider = ({ hooks, Component }) => (
+  const HookProvider = () => (
     <Component
       {...props}
       {...hooks.reduce(
@@ -14,7 +14,7 @@ const connectHooks = hooks => Component => props => {
     />
   )
 
-  return <HookProvider hooks={hooks} Component={Component} />
+  return <HookProvider />
 }
 
 export default connectHooks
