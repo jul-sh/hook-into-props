@@ -1,6 +1,8 @@
 # 🚢connectHooks 
 
-##### Convert hooks to higherOrders like so:
+## How to use:
+
+### Convert hooks to higherOrders like so:
 
 ```jsx
 const withWindowSize = connectHooks([
@@ -26,7 +28,7 @@ const withWindowSizeAndScrollPosition = connectHooks([
 ])
 ```
 
-##### Or use connectHooks directly like so:
+### Or use connectHooks directly like so:
 
 ```jsx
 export default connectHooks([
@@ -45,7 +47,7 @@ export default connectHooks([
 )
 ```
 
-#### Purpose
+## Purpose
 
 Using this, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. 
 
