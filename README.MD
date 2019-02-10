@@ -47,8 +47,8 @@ export default connectHooks([
 
 example: https://codesandbox.io/s/qk6r33649q
 
-This probably isn't a good pattern longterm, since in functional components you simply use hooks directly. 
+Using this, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. 
 
-However, using this, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. 
+Long term however, this pattern probably isn't that helpful. Hooks basically elimate the need for class components, and in functional components you can use them directly.
 
-Also, it was fun to code 😉.
+It can help with the transition period though, and it was fun to code 😉.
