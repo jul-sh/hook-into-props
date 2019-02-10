@@ -4,17 +4,24 @@
   "description": "",
   "keywords": [],
   "main": "example/App.js",
-  "dependencies": {
-    "react": "16.8.0",
-    "react-dom": "16.8.0",
+  "dependencies": {},
+  "devDependencies": {
     "react-scripts": "2.0.3"
   },
-  "devDependencies": {},
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
