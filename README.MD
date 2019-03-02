@@ -54,3 +54,7 @@ const withWindowSizeAndScrollPosition = connectHooks([
 Simply rewrite your existing HoC into a custom hook. That makes it easy to consume in your newer functional components. Then use `connectHooks` to recreate the former HoC.
 
 Long term, `connectHooks` probably isn't that helpful. Hooks elimate the need for class components, and in your new, functional components you can consume hooks directly. Over time, you can gradually replace your old class components, eventually eliminating the need for `connectHooks`.
+
+## Installation
+
+Simply paste the content of `connectHooks.js` into your codebase, it's only 20 lines of code. :3
