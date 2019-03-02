@@ -1,6 +1,25 @@
-# 🚢connectHooks 
+# 🚢connectHooks
 
 ## How to use:
+
+### Use your hooks in your old class components like so:
+
+```jsx
+export default connectHooks([
+  {
+    hook: useFetch,
+    hookArgs: ['https://swapi.co/api/people/1'],
+    toProps: ([isLoading, data]) => ({ isLoading, data })
+  }
+])(
+  class ClassComponent extends React.Component {
+    // ...
+    render() {
+      this.props.isLoading ? 'loading' : this.props.data
+    }
+  }
+)
+```
 
 ### Convert hooks to higherOrders like so:
 
@@ -28,29 +47,10 @@ const withWindowSizeAndScrollPosition = connectHooks([
 ])
 ```
 
-### Or use connectHooks directly like so:
-
-```jsx
-export default connectHooks([
-  {
-    hook: useFetch,
-    hookArgs: ["https://swapi.co/api/people/1"],
-    toProps: ([isLoading, data]) => ({ isLoading, data })
-  }
-])(
-  class ClassComponent extends React.Component {
-    // ...
-    render() {
-      this.props.isLoading ? "loading" : this.props.data
-    }
-  }
-)
-```
-
 ## Purpose:
 
-Using this, you can refactor your codebase's existing HoCs into hooks while continuing to use them with your old class components. 
+`connectHooks` allows you to refactor your existing HoCs into hooks without needing to also refactor all your class based components that use them.
 
-Long term, `connectHooks` probably isn't that helpful. Hooks elimate the need for class components, and in functional components you can call hooks directly.
+Simply rewrite your existing HoC into a custom hook. That makes it easy to consume in your newer functional components. Then use `connectHooks` to recreate the former HoC.
 
-It can help with the transition period though, and it was fun to code 😉.
+Long term, `connectHooks` probably isn't that helpful. Hooks elimate the need for class components, and in your new, functional components you can consume hooks directly. Over time, you can gradually replace your old class components, eventually eliminating the need for `connectHooks`.
