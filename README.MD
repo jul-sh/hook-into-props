@@ -51,8 +51,8 @@ const withWindowSizeAndScrollPosition = connectHooks([
 
 `connectHooks` allows you to refactor your existing HoCs into hooks without needing to also refactor all your class based components that use them.
 
-Simply rewrite your existing HoC into a custom hook. That makes it easy to consume in your newer functional components. Then use `connectHooks` to recreate the former HoC.
+Simply rewrite your existing HoC into a custom hook. That makes it easy to consume in your newer functional components. Then use `connectHooks` to recreate the former HoC and continue support for your class components.
 
 ## Installation
 
-Simply paste the content of `connectHooks.js` into your codebase, it's only 20 lines of code. :3
+Simply add [connectHooks.js](connectHooks.js) to your codebase, it's only 20 lines of code. :3
