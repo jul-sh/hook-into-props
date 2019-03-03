@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "example/App.js",
+  "main": "codesandbox/App.js",
   "dependencies": {},
   "devDependencies": {
     "react-scripts": "2.0.3"
