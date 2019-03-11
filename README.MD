@@ -1,6 +1,12 @@
 # 🚢connectHooks
 
-## How to use:
+##### Summary
+
+`connectHooks` allows you to replace HoCs with hooks without needing to also refactor all your class components. The API for this abstraction is still experimental and hasn't been applied to a large codebase. For alternate API proposals, check the different branches. :)
+
+##### In detail
+
+You may find yourself wanting to rewrite a HoC into a custom hook, since they are easier to consume in functional components. Usually that would mean that would have to refactor all the class components that use that HoC, since you cannot use hooks in React classes. However, with `connectHooks` can recreate the former HoC and continue supporting your class components.
 
 ### Use hooks in class components like so:
 
@@ -47,16 +53,24 @@ const withWindowSizeAndScrollPosition = connectHooks([
 ])
 ```
 
-## Purpose:
+```jsx
+// HoC with dynamic arguments
 
-##### Summary
+const withFetch = url =>
+  connectHooks([
+    {
+      hook: useFetch,
+      hookArgs: [url],
+      toProps: ([isLoading, data]) => ({ isLoading, data })
+    }
+  ])
 
-`connectHooks` allows you to replace HoCs with hooks without needing to also refactor all your class components.
+class ClassComponent extends React.Component {
+  // ...
+  render() {
+    this.props.isLoading ? 'loading' : this.props.data
+  }
+}
 
-##### In detail
-
-You may find yourself wanting to rewrite a HoC into a custom hook, since they are easier to consume in functional components. Usually that would mean that would have to refactor all the class components that use that HoC, since you cannot use hooks in React classes. However, with `connectHooks` can recreate the former HoC and continue supporting your class components.
-
-## Installation
-
-You can add [connectHooks.js](connectHooks.js) directly to your codebase. It's depency free and only 20 lines of code. :3
+export default withFetch('https://swapi.co/api/people/1')(ClassComponent)
+```
