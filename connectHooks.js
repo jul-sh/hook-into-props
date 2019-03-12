@@ -1,18 +1,7 @@
-import React from "react"
+import React from 'react'
 
-const connectHooks = hooks => Component => props => {
-  const HookProvider = () => (
-    <Component
-      {...props}
-      {...hooks.reduce(
-        (accumulator, { hook, hookArgs, toProps }) => ({
-          ...accumulator,
-          ...toProps(hook(...hookArgs))
-        }),
-        {}
-      )}
-    />
-  )
+const connectHooks = getHookValues => Component => props => {
+  const HookProvider = () => <Component {...props} {...getHookValues()} />
 
   return <HookProvider />
 }

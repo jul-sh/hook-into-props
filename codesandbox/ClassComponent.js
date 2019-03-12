@@ -1,13 +1,11 @@
-import React from "react"
-import connectHooks from "../connectHooks"
+import React from 'react'
+import connectHooks from '../connectHooks'
 
-export default connectHooks([
-  {
-    hook: React.useState,
-    hookArgs: ["Hello World!"],
-    toProps: ([value, setValue]) => ({ value, setValue })
-  }
-])(
+export default connectHooks(() => {
+  const [value, setValue] = React.useState('Hello World!')
+
+  return { value, setValue }
+})(
   class ClassComponent extends React.Component {
     // ... (imagine legacy code here)
     handleChange = event => this.props.setValue(event.target.value)
