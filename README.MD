@@ -37,8 +37,6 @@ For more background see Ryan Florence's [Using Hooks in Classes](https://reacttr
 
 Using `connectHooks` you can start using the shiny new react hooks, without worrying about breaking support for old class components.
 
-Note that this helper is still experimental and may not be the abtraction you need. I mostly coded this up for fun. :3
-
 ## Advanced Examples
 
 Combining multiple hooks into a single HoC:
