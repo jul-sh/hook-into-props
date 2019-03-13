@@ -1,8 +1,8 @@
-import React from 'react'
-import connectHooks from '../connectHooks'
+import React from "react"
+import connectHooks from "../connectHooks"
 
 export default connectHooks(() => {
-  const [value, setValue] = React.useState('Hello World!')
+  const [value, setValue] = React.useState("Hello World!")
 
   return { value, setValue }
 })(

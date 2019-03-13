@@ -21,7 +21,7 @@ Source code:
 
 ```jsx
 const connectHooks = getHookValues => Component => {
-  const HooksProvider = props => <Component {...props} {...getHookValues()} />
+  const HooksProvider = props => <Component {...props} {...getHookValues(props)} />
 
   return HooksProvider
 }
@@ -42,7 +42,7 @@ Using `connectHooks` you can start using the shiny new react hooks, without worr
 Combining multiple hooks into a single HoC:
 
 ```jsx
-class DisplayWindowSize extends React.Component {
+class WindowDetails extends React.Component {
   // ...
   render() {
     this.props.windowSize + ' ' + this.props.scrollPosition
@@ -56,25 +56,30 @@ const withWindowSizeAndScrollPosition = connectHooks(() => {
   return { windowSize, scrollPosition }
 })
 
-export default withWindowSizeAndScrollPosition(DisplayWindowSize)
+export default withWindowSizeAndScrollPosition(WindowDetails)
 ```
 
-Building HoC that accept additional arguments:
+Using props with hooks:
 
 ```jsx
-const withFetch = (Component, url) =>
-  connectHooks(() => {
-    const [isLoading, data] = useFetch('url')
-
-    return { isLoading, data }
-  })(Component)
-
-class ClassComponent extends React.Component {
+class SearchResults extends React.Component {
   // ...
   render() {
-    this.props.isLoading ? 'loading' : this.props.data
+    this.props.isLoading ? 'loading' : this.props.searchResults
   }
 }
 
-export default withFetch(ClassComponent, 'https://swapi.co/api/people/1')
+const withHooks = connectHooks(props => {
+  const [isLoading, searchResults] = useFetch(
+    `https://foo.com/?search=${props.searchTerm}`
+  )
+
+  return { isLoading, searchResults }
+})
+
+export default withHooks(WindowDetails)
+```
+
+```jsx
+<SearchResults searchTerm={searchTerm}>
 ```
