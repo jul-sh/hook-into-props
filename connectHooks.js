@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 
-const connectHooks = getHookValues => Component => props => {
-  const HookProvider = () => <Component {...props} {...getHookValues()} />
+const connectHooks = getHookValues => Component => {
+  const HooksProvider = props => <Component {...props} {...getHookValues()} />
 
-  return <HookProvider />
+  return HooksProvider
 }
 
 export default connectHooks

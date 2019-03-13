@@ -20,10 +20,10 @@ export default withWindowSize(DisplayWindowSize)
 Source code:
 
 ```jsx
-const connectHooks = getHookValues => Component => props => {
-  const HookProvider = () => <Component {...props} {...getHookValues()} />
+const connectHooks = getHookValues => Component => {
+  const HooksProvider = props => <Component {...props} {...getHookValues()} />
 
-  return <HookProvider />
+  return HooksProvider
 }
 ```
 
