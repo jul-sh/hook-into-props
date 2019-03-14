@@ -1,6 +1,6 @@
 # 🚢connectHooks
 
-## Convert hooks to higherOrders like so:
+## Use hooks like higherOrders:
 
 ```jsx
 class DisplayWindowSize extends React.Component {
@@ -10,9 +10,9 @@ class DisplayWindowSize extends React.Component {
   }
 }
 
-const withWindowSize = connectHooks(() => ({ windowSize: useWindowSize() }))
+const HooksThumb = () => ({ windowSize: useWindowSize() }))
 
-export default withWindowSize(DisplayWindowSize)
+export default connectHooks(HooksThumb)(DisplayWindowSize)
 ```
 
 ## Under the hood
@@ -20,24 +20,36 @@ export default withWindowSize(DisplayWindowSize)
 Source code:
 
 ```jsx
-const connectHooks = getHookValues => Component => {
-  const HooksProvider = props => (
-    <Component {...props} {...getHookValues(props)} />
-  )
+const connectHooks = HooksThumb => Component => {
+  const HooksProvider = props => <Component {...props} {...HooksThumb(props)} />
 
   return HooksProvider
 }
 ```
 
-According to the React docs, [hooks should only be called from React function components](https://reactjs.org/docs/hooks-overview.html#rules-of-hooks). So why can we call hooks in `getHookValues`, even though it is not a React component?
-
-The hook calls in `getHookValues` are only evaluated once that function is called. (A concept known as [lazy evaluation](https://stackoverflow.com/a/38904906)). We call `getHookValues` inside of the `HookProvider` [Higher-Order-Component](https://reactjs.org/docs/higher-order-components.html). Since `getHookValues` is ultimately called from a React function component, our hook calls are properly processed.
-
-## But why?
-
-Using `connectHooks` you can start using the shiny new react hooks, without worrying about breaking support for old class components.
+The hook calls in `HooksThumb` are only evaluated once that function is called. (A concept known as [lazy evaluation](https://stackoverflow.com/a/38904906)). We call `HooksThumb` inside of the `HookProvider` [Higher-Order-Component](https://reactjs.org/docs/higher-order-components.html). Since `HooksThumb` is called from a React function component, our hook calls are properly processed.
 
 ## Advanced Examples
+
+Using multiple hooks into a single HoC:
+
+```jsx
+class WindowDetails extends React.Component {
+  // ...
+  render() {
+    this.props.windowSize + ' ' + this.props.scrollPosition
+  }
+}
+
+const HooksThumb = () => {
+  const windowSize = useWindowSize()
+  const scrollPosition = useWindowScrollPosition()
+
+  return { windowSize, scrollPosition }
+}
+
+export default connectHooks(HooksThumb)(WindowDetails)
+```
 
 Using props with hooks:
 
@@ -49,53 +61,13 @@ class SearchResults extends React.Component {
   }
 }
 
-const withHooks = connectHooks(props => {
+const HooksThumb = props => {
   const [isLoading, searchResults] = useFetch(
     `https://foo.com/?search=${props.searchTerm}`
   )
 
   return { isLoading, searchResults }
-})
-
-export default withHooks(WindowDetails)
-```
-
-Combining multiple hooks into a single HoC:
-
-```jsx
-class WindowDetails extends React.Component {
-  // ...
-  render() {
-    this.props.windowSize + ' ' + this.props.scrollPosition
-  }
 }
 
-const withWindowSizeAndScrollPosition = connectHooks(() => {
-  const windowSize = useWindowSize()
-  const scrollPosition = useWindowScrollPosition()
-
-  return { windowSize, scrollPosition }
-})
-
-export default withWindowSizeAndScrollPosition(WindowDetails)
-```
-
-Combining multiple hooks into a single HoC:
-
-```jsx
-class WindowDetails extends React.Component {
-  // ...
-  render() {
-    this.props.windowSize + ' ' + this.props.scrollPosition
-  }
-}
-
-const withWindowSizeAndScrollPosition = connectHooks(() => {
-  const windowSize = useWindowSize()
-  const scrollPosition = useWindowScrollPosition()
-
-  return { windowSize, scrollPosition }
-})
-
-export default withWindowSizeAndScrollPosition(WindowDetails)
+export default connectHooks(HooksThumb)(WindowDetails)
 ```

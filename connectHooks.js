@@ -1,9 +1,7 @@
 import React from "react"
 
-const connectHooks = getHookValues => Component => {
-  const HooksProvider = props => (
-    <Component {...props} {...getHookValues(props)} />
-  )
+const connectHooks = HooksThumb => Component => {
+  const HooksProvider = props => <Component {...props} {...HooksThumb(props)} />
 
   return HooksProvider
 }
