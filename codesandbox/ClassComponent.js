@@ -1,5 +1,5 @@
-import React from "react"
-import connectHooks from "../connectHooks"
+import React from 'react'
+import connectToHooks from '../connectToHooks'
 
 class ClassComponent extends React.Component {
   // ... (imagine legacy code here)
@@ -9,10 +9,10 @@ class ClassComponent extends React.Component {
   }
 }
 
-const HooksThumb = () => {
-  const [value, setValue] = React.useState("Hello World!")
+const useHooks = () => {
+  const [value, setValue] = React.useState('Hello World!')
 
   return { value, setValue }
 }
 
-export default connectHooks(HooksThumb)(ClassComponent)
+export default connectToHooks(useHooks)(ClassComponent)
