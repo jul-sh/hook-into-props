@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "codesandbox/App.js",
-  "dependencies": {},
+  "main": "example/App.js",
+  "dependencies": {
+    "hook-to-props": "^1.0.0"
+  },
   "devDependencies": {
     "react-scripts": "2.0.3"
   },

@@ -1,5 +1,5 @@
 import React from 'react'
-import hookToProps from '../hookToProps'
+import hookToProps from 'hook-to-props'
 
 class ClassComponent extends React.Component {
   // ... (imagine legacy code here)
