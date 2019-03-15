@@ -1,27 +1,23 @@
 {
-  "name": "connect-hooks-example",
+  "name": "hook-to-props",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tiny abstraction to use React hooks with class components.",
   "keywords": [],
-  "main": "codesandbox/App.js",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.js",
   "dependencies": {},
   "devDependencies": {
-    "react-scripts": "2.0.3"
+    "microbundle": "^0.11.0",
+    "react": "^16.8.4"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.8.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "build": "microbundle --jsx \"React.createElement\"",
+    "dev": "microbundle --watch --jsx \"React.createElement\"",
+    "prepublishOnly": "npm run build"
+  }
 }
