@@ -20,9 +20,9 @@ export default hookToProps(useHooks)(DisplayWindowSize)
 ```jsx
 // That's the entire source code, really.
 const hookToProps = useHooks => Component => {
-  const HooksProvider = props => <Component {...props} {...useHooks(props)} />
+  const HookResultProvider = props => <Component {...props} {...useHooks(props)} />
 
-  return HooksProvider
+  return HookResultProvider
 }
 
 export default hookToProps
