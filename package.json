@@ -1,5 +1,5 @@
 {
-  "name": "hook-to-props",
+  "name": "hook-into-props",
   "version": "1.0.0",
   "description": "Tiny abstraction to use React hooks with class components.",
   "keywords": [],

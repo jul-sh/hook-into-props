@@ -1,4 +1,4 @@
-# 🚢 hookToProps
+# 🚢 hookIntoProps
 
 ## Use hooks like higherOrders:
 
@@ -11,12 +11,12 @@ class DisplayWindowSize extends React.Component {
 
 const useHooks = () => ({ windowSize: useWindowSize() }))
 
-export default hookToProps(useHooks)(DisplayWindowSize)
+export default hookIntoProps(useHooks)(DisplayWindowSize)
 ```
 
 ## Installation
 
-You can install it via `npm i hook-to-props`. (120 bytes gzipped).
+You can install it via `npm i hook-into-props`. (120 bytes gzipped).
 
 Alternatively you can copy the source code below, it's only a few lines.
 
@@ -24,14 +24,14 @@ Alternatively you can copy the source code below, it's only a few lines.
 
 ```jsx
 // That's the entire source code, really.
-const hookToProps = useHooks => Component => {
+const hookIntoProps = useHooks => Component => {
   const HooksProvider = props => <Component {...props} {...useHooks(props)} />
 
   return HooksProvider
 }
 ```
 
-`useHooks` is a custom hook that used to call, format and combine React hooks. It can return an object which is spread to the props of the passed component. `HookProvider` is a functional [Higher-Order-Component](https://reactjs.org/docs/higher-order-components.html). It allows us to call react hooks & add aditional props to our component.
+The `useHooks` argument should be a custom hook. It can be that used to call, format and combine React hooks. We can use it to return an object which is spread to the props of the passed component. `HookProvider` is a functional [Higher-Order-Component](https://reactjs.org/docs/higher-order-components.html). It allows us to call react hooks & add aditional props to our component.
 
 (The fact that the hook calls in `useHooks` are only executed when `useHooks` is called is known as [lazy evaluation](https://stackoverflow.com/a/38904906). A function used to inject code into another component is also known as a [Thunk](https://en.wikipedia.org/wiki/Thunk).)
 
@@ -54,7 +54,7 @@ const useHooks = props => {
   return { isLoading, searchResults }
 }
 
-export default hookToProps(useHooks)(WindowDetails)
+export default hookIntoProps(useHooks)(WindowDetails)
 ```
 
 Using multiple hooks:
@@ -73,5 +73,5 @@ const useHooks = () => {
   return { windowSize, scrollPosition }
 }
 
-export default hookToProps(useHooks)(WindowDetails)
+export default hookIntoProps(useHooks)(WindowDetails)
 ```
