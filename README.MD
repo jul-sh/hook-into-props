@@ -9,7 +9,7 @@ class DisplayWindowSize extends React.Component {
   }
 }
 
-const useHooks = () => ({ windowSize: useWindowSize() }))
+const useHooks = () => ({ windowSize: useWindowSize() })
 
 export default hookIntoProps(useHooks)(DisplayWindowSize)
 ```
