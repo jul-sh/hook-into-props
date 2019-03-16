@@ -75,3 +75,11 @@ const useHooks = () => {
 
 export default hookIntoProps(useHooks)(WindowDetails)
 ```
+
+Building a reusable Higher-Order Component:
+
+```jsx
+const useHooks = () => ({ windowSize: useWindowSize() })
+
+export const withWindowSize = hookIntoProps(useHooks)
+```
