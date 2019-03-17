@@ -2,12 +2,12 @@
 
 - [Introduction](#Introduction)
 - [Installation](#Installation)
-- [Under the hood](#Under-the-hood)
 - [Examples](#Examples)
   - [Using props with hooks](#Using-props-with-hooks)
   - [Using multiple hooks](#Using-multiple-hooks)
   - [Reusable-Higher-Order-Components](#Reusable-Higher-Order-Components)
   - [Replacing the old context API](#Replacing-the-old-context-API)
+- [Under the hood](#Under-the-hood)
 - [Alternatives](#Alternatives)
   - [Render-props](#Render-props)
   - [withReactHooks](#withReactHooks)
@@ -31,21 +31,6 @@ export default hookIntoProps(useHooks)(DisplayWindowSize)
 You can install it via `npm i hook-into-props`. (200 bytes gzipped).
 
 Alternatively you can copy the [source code](src/index.js), it's only a few lines.
-
-## Under the hood
-
-```jsx
-// That's the basic source code (minus ref-forwarding & displayName).
-const hookIntoProps = useHooks => Component => {
-  const HooksProvider = props => <Component {...props} {...useHooks(props)} />
-
-  return HooksProvider
-}
-```
-
-The `useHooks` argument should be a custom hook. It can be that used to call, format and combine React hooks. We can use it to return an object which is spread to the props of the passed component. `HookProvider` is a functional [Higher-Order-Component](https://reactjs.org/docs/higher-order-components.html). It allows us to call react hooks & add aditional props to our component.
-
-(The fact that the hook calls in `useHooks` are only executed when `useHooks` is called is known as [lazy evaluation](https://stackoverflow.com/a/38904906). A function used to inject code into another component is also known as a [Thunk](https://en.wikipedia.org/wiki/Thunk).)
 
 ## Examples
 
@@ -141,6 +126,21 @@ const useHooks = () => ({
 export default hookIntoProps(useHooks)(DisplayWindowSize)
 ```
 
+## Under the hood
+
+```jsx
+// That's the basic source code (minus ref-forwarding & displayName).
+const hookIntoProps = useHooks => Component => {
+  const HooksProvider = props => <Component {...props} {...useHooks(props)} />
+
+  return HooksProvider
+}
+```
+
+The `useHooks` argument should be a custom hook. It can be that used to call, format and combine React hooks. We can use it to return an object which is spread to the props of the passed component. `HookProvider` is a functional [Higher-Order-Component](https://reactjs.org/docs/higher-order-components.html). It allows us to call react hooks & add aditional props to our component.
+
+(The fact that the hook calls in `useHooks` are only executed when `useHooks` is called is known as [lazy evaluation](https://stackoverflow.com/a/38904906). A function used to inject code into another component is also known as a [Thunk](https://en.wikipedia.org/wiki/Thunk).)
+
 ## Alternatives
 
 ### Render-props
@@ -161,7 +161,7 @@ class DisplayWindowSize extends React.Component {
 }
 ```
 
-While this looks clean, I'm not sure it's really all that useful. Here, `HookProvider` must be called in the render method, meaning we won't have access to the hook result in our class methods. At that point, we could also write functional component and call hooks.
+While this looks clean, I'm not sure it's really all that useful. Here, `HookProvider` must be called in the render method, meaning we won't have access to the hook result in our class methods. At that point, we could also write a functional component and call hooks directly.
 
 ### withReactHooks
 
