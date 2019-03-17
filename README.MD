@@ -37,7 +37,7 @@ The `useHooks` argument should be a custom hook. It can be that used to call, fo
 
 ## More Examples
 
-Using props with hooks:
+### Using props with hooks:
 
 ```jsx
 class SearchResults extends React.Component {
@@ -57,7 +57,7 @@ const useHooks = props => {
 export default hookIntoProps(useHooks)(WindowDetails)
 ```
 
-Using multiple hooks:
+### Using multiple hooks:
 
 ```jsx
 class WindowDetails extends React.Component {
@@ -76,10 +76,55 @@ const useHooks = () => {
 export default hookIntoProps(useHooks)(WindowDetails)
 ```
 
-Building a reusable Higher-Order Component:
+### Building a reusable Higher-Order Component:
 
 ```jsx
 const useHooks = () => ({ windowSize: useWindowSize() })
 
 export const withWindowSize = hookIntoProps(useHooks)
+```
+
+### Replacing the old context API:
+
+```jsx
+/* Old, slow context api 😢 */
+
+import React from 'react'
+
+class UserDetails extends React.Component {
+  render() {
+    const { referralCode, timezoneOffset, featureList } = this.context
+    // ...
+  }
+}
+
+UserDetails.contextTypes = {
+  referralCode: PropTypes.string,
+  timezoneOffset: PropTypes.number,
+  featureList: PropTypes.arrayOf(PropTypes.string)
+}
+
+export default UserDetails
+```
+
+```jsx
+/* refactored to the new context API ✨ */
+
+import React from 'react'
+import { ReferralCode, TimezoneOffset, FeatureList } from '~/contexts'
+
+class UserDetails extends React.Component {
+  render() {
+    const { referralCode, timezoneOffset, featureList } = this.props
+    // ...
+  }
+}
+
+const useHooks = () => ({
+  referralCode: useContext(ReferralCode),
+  timezoneOffset: useContext(TimezoneOffset),
+  featureList: useContext(FeatureList)
+})
+
+export default hookIntoProps(useHooks)(DisplayWindowSize)
 ```
