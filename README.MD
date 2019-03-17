@@ -16,18 +16,16 @@ export default hookIntoProps(useHooks)(DisplayWindowSize)
 
 ## Installation
 
-You can install it via `npm i hook-into-props`. (120 bytes gzipped).
+You can install it via `npm i hook-into-props`. (200 bytes gzipped).
 
-Alternatively you can copy the source code below, it's only a few lines.
+Alternatively you can copy the source code, it's only a few lines.
 
 ## Under the hood
 
 ```jsx
-// That's the entire source code, really.
+// That's the basic source code (minus ref-forwarding & displayName).
 const hookIntoProps = useHooks => Component => {
-  const HooksProvider = React.forwardRef((props, ref) => (
-    <Component ref={ref} {...props} {...useHooks(props)} />
-  ))
+  const HooksProvider = props => <Component {...props} {...useHooks(props)} />
 
   return HooksProvider
 }

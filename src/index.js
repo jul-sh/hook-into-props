@@ -5,6 +5,10 @@ const hookIntoProps = useHooks => Component => {
     <Component ref={ref} {...props} {...useHooks(props)} />
   ))
 
+  HooksProvider.displayName = `HookIntoProps(${Component.displayName ||
+    Component.name ||
+    'Component'})`
+
   return HooksProvider
 }
 
