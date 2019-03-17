@@ -128,3 +128,31 @@ const useHooks = () => ({
 
 export default hookIntoProps(useHooks)(DisplayWindowSize)
 ```
+
+## Alternatives:
+
+### Render-props:
+
+We could also create a simple Component that allows us to use consume hooks through render-props:
+
+```jsx
+const HookProvider = ({ children, useHooks }) => children(useHooks())
+
+class DisplayWindowSize extends React.Component {
+  render() {
+    return (
+      <HookProvider useHooks={() => useWindowSize()}>
+        {windowSize => <span>{windowSize}</span>}
+      </HookProvider>
+    )
+  }
+}
+```
+
+While this looks clean, I'm not sure it's really all that useful. Here, `HookProvider` must be called in the render method, meaning we won't have access to the hook result in our class methods. At that point, we could also write functional component and call hooks.
+
+### withReactHooks:
+
+[withReactHooks](https://github.com/kesne/with-react-hooks) is a HoC that allows you to call hooks directly in a class component's render method. I would advise against this approach as well.
+
+Not only does it suffer from the same caveats as the render-props approach, but it relies on [mutating the passed Component's render method](https://github.com/kesne/with-react-hooks/blob/master/src/index.tsx). The React documentation explicitly [warns against this](https://reactjs.org/docs/higher-order-components.html#dont-mutate-the-original-component-use-composition). Instead of mutation, composition is recommended, which is the approach taken by `hookIntoProps`.
