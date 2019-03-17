@@ -1,6 +1,18 @@
 # 🚢 hookIntoProps
 
-## Use hooks like higherOrders:
+- [Introduction](#Introduction)
+- [Installation](#Installation)
+- [Under the hood](#Under-the-hood)
+- [Examples](#Examples)
+  - [Using props with hooks](#Using-props-with-hooks)
+  - [Using multiple hooks](#Using-multiple-hooks)
+  - [Reusable-Higher-Order-Components](#Reusable-Higher-Order-Components)
+  - [Replacing the old context API](#Replacing-the-old-context-API)
+- [Alternatives](#Alternatives)
+  - [Render-props](#Render-props)
+  - [withReactHooks](#withReactHooks)
+
+## Introduction
 
 ```jsx
 class DisplayWindowSize extends React.Component {
@@ -35,9 +47,9 @@ The `useHooks` argument should be a custom hook. It can be that used to call, fo
 
 (The fact that the hook calls in `useHooks` are only executed when `useHooks` is called is known as [lazy evaluation](https://stackoverflow.com/a/38904906). A function used to inject code into another component is also known as a [Thunk](https://en.wikipedia.org/wiki/Thunk).)
 
-## More Examples
+## Examples
 
-### Using props with hooks:
+### Using props with hooks
 
 ```jsx
 class SearchResults extends React.Component {
@@ -57,7 +69,7 @@ const useHooks = props => {
 export default hookIntoProps(useHooks)(WindowDetails)
 ```
 
-### Using multiple hooks:
+### Using multiple hooks
 
 ```jsx
 class WindowDetails extends React.Component {
@@ -76,7 +88,7 @@ const useHooks = () => {
 export default hookIntoProps(useHooks)(WindowDetails)
 ```
 
-### Building a reusable Higher-Order Component:
+### Reusable Higher-Order-Components
 
 ```jsx
 const useHooks = () => ({ windowSize: useWindowSize() })
@@ -84,7 +96,7 @@ const useHooks = () => ({ windowSize: useWindowSize() })
 export const withWindowSize = hookIntoProps(useHooks)
 ```
 
-### Replacing the old context API:
+### Replacing the old context API
 
 ```jsx
 /* Old, slow context api 😢 */
@@ -129,9 +141,9 @@ const useHooks = () => ({
 export default hookIntoProps(useHooks)(DisplayWindowSize)
 ```
 
-## Alternatives:
+## Alternatives
 
-### Render-props:
+### Render-props
 
 We could also create a simple Component that allows us to use consume hooks through render-props:
 
@@ -151,7 +163,7 @@ class DisplayWindowSize extends React.Component {
 
 While this looks clean, I'm not sure it's really all that useful. Here, `HookProvider` must be called in the render method, meaning we won't have access to the hook result in our class methods. At that point, we could also write functional component and call hooks.
 
-### withReactHooks:
+### withReactHooks
 
 [withReactHooks](https://github.com/kesne/with-react-hooks) is a HoC that allows you to call hooks directly in a class component's render method. I would advise against this approach as well.
 
