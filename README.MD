@@ -25,7 +25,9 @@ Alternatively you can copy the source code below, it's only a few lines.
 ```jsx
 // That's the entire source code, really.
 const hookIntoProps = useHooks => Component => {
-  const HooksProvider = props => <Component {...props} {...useHooks(props)} />
+  const HooksProvider = React.forwardRef((props, ref) => (
+    <Component ref={ref} {...props} {...useHooks(props)} />
+  ))
 
   return HooksProvider
 }
