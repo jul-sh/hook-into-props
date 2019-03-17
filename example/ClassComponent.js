@@ -1,5 +1,5 @@
-import React from 'react'
-import hookToProps from 'hook-to-props'
+import React from "react"
+import hookIntoProps from "hook-into-props"
 
 class ClassComponent extends React.Component {
   // ... (imagine legacy code here)
@@ -10,9 +10,9 @@ class ClassComponent extends React.Component {
 }
 
 const useHooks = () => {
-  const [value, setValue] = React.useState('Hello World!')
+  const [value, setValue] = React.useState("Hello World!")
 
   return { value, setValue }
 }
 
-export default hookToProps(useHooks)(ClassComponent)
+export default hookIntoProps(useHooks)(ClassComponent)

@@ -1,11 +1,11 @@
 {
-  "name": "connect-hooks-example",
+  "name": "hook-into-props-example",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "example/App.js",
   "dependencies": {
-    "hook-to-props": "^1.0.0"
+    "hook-into-props": "2.0.0"
   },
   "devDependencies": {
     "react-scripts": "2.0.3"
@@ -20,10 +20,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }
