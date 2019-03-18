@@ -129,7 +129,7 @@ export default hookIntoProps(useHooks)(DisplayWindowSize)
 ## Under the hood
 
 ```jsx
-// That's the basic source code (minus ref-forwarding & displayName).
+// That's the basic source code:
 const hookIntoProps = useHooks => Component => {
   const HooksProvider = props => <Component {...props} {...useHooks(props)} />
 
