@@ -1,4 +1,5 @@
 import React from 'react'
+import hoistNonReactStatics from 'hoist-non-react-statics'
 
 const hookIntoProps = useHooks => Component => {
   const HooksProvider = React.forwardRef((props, ref) => (
@@ -9,7 +10,7 @@ const hookIntoProps = useHooks => Component => {
     Component.name ||
     'Component'})`
 
-  return HooksProvider
+  return hoistNonReactStatics(HooksProvider, Component)
 }
 
 export default hookIntoProps
