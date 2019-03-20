@@ -28,7 +28,7 @@ class ExampleComponent extends React.Component {
   }
 }
 
-ExampleComponentBase.foo = 'bar'
+ExampleComponent.foo = 'bar'
 
 const useHooks = ({ initialCount = 0 }) => {
   const [count, setCount] = React.useState(initialCount)
@@ -67,7 +67,7 @@ describe('The `hookIntoProps` helper', () => {
 
   it('hoists statics of the wrapped Component', () => {
     const actual = WrappedExampleComponent.foo
-    const expected = ExampleComponentBase.foo
+    const expected = ExampleComponent.foo
     expect(actual).toEqual(expected)
   })
 })
