@@ -2,9 +2,8 @@ import React from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 
 const hookIntoProps = useHooks => Component => {
-  const HooksProvider = React.forwardRef((props, ref) =>
-    React.createElement(Component, { ...props, ref, ...useHooks(props) })
-  )
+  const HooksProvider = props =>
+    React.createElement(Component, { ...props, ...useHooks(props) })
 
   HooksProvider.displayName = `HookIntoProps(${Component.displayName ||
     Component.name ||
