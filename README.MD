@@ -51,7 +51,7 @@ const useHooks = props => {
   return { isLoading, searchResults }
 }
 
-export default hookIntoProps(useHooks)(WindowDetails)
+export default hookIntoProps(useHooks)(SearchResults)
 ```
 
 ### Using multiple hooks
@@ -76,7 +76,7 @@ const useHooks = () => ({
   featureList: useContext(FeatureList)
 })
 
-export default hookIntoProps(useHooks)(DisplayWindowSize)
+export default hookIntoProps(useHooks)(UserForm)
 ```
 
 ### Exporting Higher-Order-Components
