@@ -1,4 +1,4 @@
-# 🚢 hookIntoProps
+# 🚢 hook-into-props
 
 - [Introduction](#Introduction)
 - [Installation](#Installation)
@@ -15,6 +15,9 @@
 ## Introduction
 
 ```jsx
+import React from 'react'
+import hookIntoProps from 'hook-into-props'
+
 class DisplayWindowSize extends React.Component {
   render() {
     return this.props.windowSize
@@ -37,6 +40,9 @@ Alternatively you can copy the [source code](src/index.js), it's only a few line
 ### Using props with hooks
 
 ```jsx
+import React from 'react'
+import hookIntoProps from 'hook-into-props'
+
 class SearchResults extends React.Component {
   render() {
     this.props.isLoading ? 'loading' : this.props.searchResults
@@ -58,6 +64,7 @@ export default hookIntoProps(useHooks)(SearchResults)
 
 ```jsx
 import React from 'react'
+import hookIntoProps from 'hook-into-props'
 import { ReferralCode, TimezoneOffset, FeatureList } from '~/contexts'
 
 class UserForm extends React.Component {
@@ -108,6 +115,8 @@ const hookIntoProps = useHooks => Component => {
 To avoid any helpers at all, we could inline a functional component in the export statement.
 
 ```jsx
+import React from 'react'
+
 class DisplayWindowSize extends React.Component {
   render() {
     return this.props.isLoading ? 'loading' : this.props.searchResults
@@ -138,6 +147,8 @@ There's some caveats to this though. First, the export must be a named function 
 We could also create a simple Component that allows us to consume hooks through render-props:
 
 ```jsx
+import React from 'react'
+
 const HookProvider = ({ children, useHooks }) => children(useHooks())
 
 class DisplayWindowSize extends React.Component {
