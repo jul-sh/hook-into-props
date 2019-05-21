@@ -96,7 +96,7 @@ export const withWindowSize = hookIntoProps(() => ({
 
 ## Under the hood
 
-That's the (simplified) [source code](src/index.js):
+That's the (simplified) [source code](index.js):
 
 ```jsx
 function hookIntoProps(useHooks) {
