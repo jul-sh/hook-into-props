@@ -89,9 +89,9 @@ export default hookIntoProps(useHooks)(UserForm)
 ### Exporting Higher-Order-Components
 
 ```jsx
-const useHooks = () => ({ windowSize: useWindowSize() })
-
-export const withWindowSize = hookIntoProps(useHooks)
+export const withWindowSize = hookIntoProps(() => ({
+  windowSize: useWindowSize()
+}))
 ```
 
 ## Under the hood
@@ -99,10 +99,12 @@ export const withWindowSize = hookIntoProps(useHooks)
 That's the (simplified) [source code](src/index.js):
 
 ```jsx
-const hookIntoProps = useHooks => Component => {
-  const HooksProvider = props => <Component {...props} {...useHooks(props)} />
-
-  return HooksProvider
+function hookIntoProps(useHooks) {
+  return function(Component) {
+    return function(props) {
+      return <Component {...props} {...useHooks(props)} />
+    }
+  }
 }
 ```
 
