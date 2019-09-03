@@ -33,7 +33,7 @@ export default hookIntoProps(useHooks)(DisplayWindowSize)
 
 You can install it via `npm i hook-into-props`. (200 bytes + 1kb dependencies. See [bundle-phobia](https://bundlephobia.com/result?p=hook-into-props))
 
-Alternatively you can copy the [source code](src/index.js), it's only a few lines. If you don't feel like adding any abstractions at all, check out [without-abstractions](#without-abstractions).
+Alternatively you can copy the [source code](index.js), it's only a few lines. If you don't feel like adding any abstractions at all, check out [without-abstractions](#without-abstractions).
 
 ## Examples
 
