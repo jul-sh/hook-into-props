@@ -101,14 +101,14 @@ That's the (simplified) [source code](index.js):
 ```jsx
 function hookIntoProps(useHooks) {
   return function(Component) {
-    return function(props) {
+    return function HooksProvider(props) {
       return <Component {...props} {...useHooks(props)} />
     }
   }
 }
 ```
 
-(The hook calls in `useHooks` are only executed when `useHooks` is called inside of `HooksProvider`. This is a concept known as [lazy evaluation](https://stackoverflow.com/a/38904906). A function passed to be executed in another component is also known as a [Thunk](https://en.wikipedia.org/wiki/Thunk).)
+(The hook calls in `useHooks` are only executed when `useHooks` is called inside of `HooksProvider`. At that point they are called within a function component, where we can use hooks. The results of our hook calls are passed as props)
 
 ## Alternatives
 
