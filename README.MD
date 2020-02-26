@@ -166,6 +166,8 @@ class DisplayWindowSize extends React.Component {
 
 This looks clean, but we won't have access to the hook result in our other class methods. This can make it poor choice for supporting existing class components.
 
-### Rewriting your class as a functional component
+### Rewriting your class as a function component
 
-You could also refactor your class component and directly use hooks inside your new function component. However, refactoring existing classes isn't always an option. Being able to use your new hooks with your old code can be convenient.
+You could also refactor your class component and directly use hooks inside your new function component. However, refactoring existing classes isn't always an option.
+
+Being able to use hooks with your old code can be convenient. It actually allows you to refactor existing higher order components to hooks without breaking support for your existing class components.
