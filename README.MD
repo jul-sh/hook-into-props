@@ -1,17 +1,5 @@
 # 🚢 hook-into-props
 
-- [Introduction](#Introduction)
-- [Installation](#Installation)
-- [Examples](#Examples)
-  - [Using props with hooks](#Using-props-with-hooks)
-  - [Using multiple hooks](#Using-multiple-hooks)
-  - [Exporting Higher-Order-Components](#Exporting-Higher-Order-Components)
-- [Under the hood](#Under-the-hood)
-- [Alternatives](#Alternatives)
-  - [Without abstractions](#Without-abstractions)
-  - [Render-props](#Render-props)
-  - [Refactoring to functional components](#Rewriting-your-class-as-a-functional-component)
-
 ## Introduction
 
 ```jsx
